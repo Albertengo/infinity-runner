@@ -1,0 +1,7 @@
+Velocidad booster: Atún en lata
+vida recuperador: Atún premium? - 2 vida
+cosa a recolectar: treats en forma de pescadito.
+
+obstaculo especial: esquivar huesos de pescado o comida podrida. (sacan 4 de vida)
+
+graficos en 2D??
