@@ -81,7 +81,7 @@ namespace player
                 collision.gameObject.SetActive(false);
             }
         }
-        void EndBoost() //volver a la velocidad normal cuando tgermine el boost
+        void EndBoost() //volver a la velocidad normal cuando termine el boost
         {
             booster = false;
             speedworld = speedworld - boosterSpeed;
