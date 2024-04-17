@@ -11,7 +11,7 @@ namespace interfaz
         public void Restart()
         {
             SceneManager.LoadScene("Game");
-            //ControlBot.Kills = 0;
+            UI.scoreValue = 0;
             //ControlJuego.CantidadEnemigos = 0;
             Time.timeScale = 1f;
         }
@@ -22,7 +22,7 @@ namespace interfaz
         public void PlayButton()
         {
             SceneManager.LoadScene("Game");
-            //ControlBot.Kills = 0;
+            UI.scoreValue = 0;
             //ControlJuego.CantidadEnemigos = 0;
             Time.timeScale = 1f;
         }

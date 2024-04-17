@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using interfaz;
 
 namespace player
 {
     public class PlayerMovement : MonoBehaviour
     {
-        [SerializeField] public int speed = 1;
-        public float speedworld = 1.0f;
+        [SerializeField] public int speed = 1;//se puede modificar
+        public float speedworld = 5.0f;
         private Rigidbody rb;
         public float jumpHeight = 1.0f;
         public bool isGrounded;
@@ -27,20 +28,7 @@ namespace player
         void Update()
         {
             Movement();
-
-        }
-
-        //NO ESTA LLEGANDO INFO DE ESTO??? pero funciona igual parece
-        private void OnCollisionEnter(Collision collision)
-        {
-            if (collision.gameObject.tag == "Ground")
-            {
-                isGrounded = true;
-                Debug.Log("Grounded es TRUE");
-            }
-            else
-                isGrounded = false;
-            Debug.Log("Grounded es FALSE");
+            speedworld = speedworld + 0.001f;
         }
 
         private void Movement()
@@ -67,9 +55,9 @@ namespace player
             transform.Translate(Vector3.forward * Time.deltaTime * speedworld, Space.World); //constantemente se mueve al frente
         }
 
-        private void OnTriggerEnter(Collider collision) //para boostear la velocidad del pj
+        private void OnTriggerEnter(Collider collision)
         {
-            if (collision.gameObject.CompareTag("Boost"))
+            if (collision.gameObject.CompareTag("Boost")) //para boostear la velocidad del pj
             {
                 booster = true;
                 if (booster == true)
@@ -80,11 +68,21 @@ namespace player
                 }
                 collision.gameObject.SetActive(false);
             }
+
+            //if (collision.gameObject.CompareTag("coleccionable") == true) //para sumar puntaje con los coleccionables
+            //{
+            //    UI.scoreValue++;
+            //    collision.gameObject.SetActive(false);
+            //}
         }
         void EndBoost() //volver a la velocidad normal cuando termine el boost
         {
             booster = false;
             speedworld = speedworld - boosterSpeed;
+            if (speedworld <= 5f)
+            {
+                speedworld = 5f;
+            }
             Debug.Log("Terminó el Boost, velocidad: " + speedworld);
         }
     }
